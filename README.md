@@ -6,42 +6,41 @@ This installs specific version of Docker
 sudo usermod <user> -aG docker
 newgrp docker`
 
+## Disable swap
+
+For Kubernetes 1.7 and onwards you will get an error if swap space is enabled.
+Turn off swap:
+
+`$ sudo dphys-swapfile swapoff && \
+  sudo dphys-swapfile uninstall && \
+  sudo update-rc.d dphys-swapfile remove`
+  
+This should now show no entries:
+
+`$ sudo swapon --summary`
+
+
+Edit /boot/cmdline.txt. Add this text at the end of the line, but don't create any new lines:
+
+`cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory`
+
+Now reboot - do not skip this step.
+
+
+## Install Kubernetes tools
+
+Add repo lists & install kubeadm
+
+```
+$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
+  echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list && \
+  sudo apt-get update -q && \
+  sudo apt-get install -qy kubeadm
+```
+
 ## Install Weave Net Driver
 
 This installs Weave Net driver which is used for the cluster
 
 `$ kubectl apply -f \
  "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
-
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/domikini/kubernetes-cluster-on-raspbian-stretch-lite/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
