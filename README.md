@@ -1,4 +1,13 @@
-## Welcome to GitHub Pages
+## Install Docker
+
+This installs specific version of Docker
+
+`$ curl -sSL get.docker.com | VERSION=18.06.1-ce sh && \
+sudo usermod <user> -aG docker
+newgrp docker`
+
+
+
 
 You can use the [editor on GitHub](https://github.com/domikini/kubernetes-cluster-on-raspbian-stretch-lite/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
