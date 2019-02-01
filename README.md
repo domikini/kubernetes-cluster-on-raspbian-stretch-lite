@@ -6,7 +6,7 @@ This installs specific version of Docker
 sudo usermod <user> -aG docker
 newgrp docker`
 
-## Disable swap
+## Disable swap and reboot
 
 For Kubernetes 1.7 and onwards you will get an error if swap space is enabled.
 Turn off swap:
