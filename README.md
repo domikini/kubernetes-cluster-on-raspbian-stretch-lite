@@ -11,9 +11,7 @@ newgrp docker`
 For Kubernetes 1.7 and onwards you will get an error if swap space is enabled.
 Turn off swap:
 
-`$ sudo dphys-swapfile swapoff && \
-  sudo dphys-swapfile uninstall && \
-  sudo update-rc.d dphys-swapfile remove`
+`$ sudo dphys-swapfile swapoff && sudo dphys-swapfile uninstall && sudo update-rc.d dphys-swapfile remove`
   
 This should now show no entries:
 
@@ -31,14 +29,10 @@ Now reboot - do not skip this step.
 
 Add repo lists & install kubeadm
 
-`$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
-  echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list && \
-  sudo apt-get update -q && \
-  sudo apt-get install -qy kubeadm`
+`$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list && sudo apt-get update -q && sudo apt-get install -qy kubeadm`
 
 ## Install Weave Net Driver
 
 This installs Weave Net driver which is used for the cluster
 
-`$ kubectl apply -f \
- "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
+`$ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
