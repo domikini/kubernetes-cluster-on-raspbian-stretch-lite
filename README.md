@@ -31,12 +31,10 @@ Now reboot - do not skip this step.
 
 Add repo lists & install kubeadm
 
-```
-$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
+`$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
   echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list && \
   sudo apt-get update -q && \
-  sudo apt-get install -qy kubeadm
-```
+  sudo apt-get install -qy kubeadm`
 
 ## Install Weave Net Driver
 
