@@ -6,12 +6,13 @@ This installs specific version of Docker
 sudo usermod <user> -aG docker
 newgrp docker`
 
+## Install Weave Net Driver
 
+This installs Weave Net driver which is used for the cluster
 
+`$ kubectl apply -f \
+ "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
 
-You can use the [editor on GitHub](https://github.com/domikini/kubernetes-cluster-on-raspbian-stretch-lite/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
 
