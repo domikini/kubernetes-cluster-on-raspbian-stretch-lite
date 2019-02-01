@@ -31,6 +31,29 @@ Add repo lists & install kubeadm
 
 `$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list && sudo apt-get update -q && sudo apt-get install -qy kubeadm`
 
+
+## Initialize your master node
+
+You now have two new commands installed:
+
+- kubeadm - used to create new clusters or join an existing one
+
+- kubectl - the CLI administration tool for Kubernetes
+
+### Pre-pull images
+
+kubeadm now has a command to pre-pull the requisites Docker images needed to run a Kubernetes master, type in:
+
+`$ sudo kubeadm config images pull -v3`
+
+
+### If using Weave Net
+
+Initialize your master node:
+
+`$ sudo kubeadm init --token-ttl=0`
+
+
 ## Install Weave Net Driver
 
 This installs Weave Net driver which is used for the cluster
