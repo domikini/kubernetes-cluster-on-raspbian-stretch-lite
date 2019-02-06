@@ -59,3 +59,20 @@ Initialize your master node:
 This installs Weave Net driver which is used for the cluster
 
 `$ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
+
+
+## Join masternode from worker nodes
+To join master node from worker nodes, run command:
+
+`$ kubeadm join 192.168.0.108:6443 --token <token_number> --discovery-token-ca-cert-hash sha256:<sha256_hash_number>`
+
+## Restart Kubernetes on master
+In order to restart Kubernetes. Run command:
+
+`$ kubeadm reset -f`
+
+Remove the folder /var/lib/kubelet
+
+`$ rm -Rf /var/lib/kubelet`
+
+
