@@ -64,7 +64,7 @@ This installs Weave Net driver which is used for the cluster
 ## Join masternode from worker nodes
 To join master node from worker nodes, run command:
 
-`$ kubeadm join 192.168.0.108:6443 --token <token_number> --discovery-token-ca-cert-hash sha256:<sha256_hash_number>`
+`$ kubeadm join <ip_number>:<port> --token <token_number> --discovery-token-ca-cert-hash sha256:<sha256_hash_number>`
 
 ## Restart Kubernetes on master
 In order to restart Kubernetes. Run command:
