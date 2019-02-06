@@ -57,9 +57,9 @@ Initialize your master node:
 
 After running init command. Run the following commands in order to setup configuration file and put it in a folder in the user home folder. Set the correct permissions for the file.
 
- `mkdir -p $HOME/.kube`
- `sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config`
- `sudo chown $(id -u):$(id -g) $HOME/.kube/config`
+ `mkdir -p $HOME/.kube` 
+ `sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config` 
+ `sudo chown $(id -u):$(id -g) $HOME/.kube/config` 
 
 
 ## Install Weave Net Driver
