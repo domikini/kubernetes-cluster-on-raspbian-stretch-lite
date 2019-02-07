@@ -83,4 +83,10 @@ Remove the folder /var/lib/kubelet
 
 `$ rm -Rf /var/lib/kubelet`
 
+## Install Kubernetes dashboard on master node
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/alternative/kubernetes-dashboard-arm.yaml`
+
+
+
+
 
