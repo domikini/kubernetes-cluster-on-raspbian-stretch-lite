@@ -79,6 +79,8 @@ In order to restart Kubernetes. Run command:
 
 `$ kubeadm reset -f`
 
+The -f flag let you execute reset without a confirmation prompt.
+
 Remove the folder /var/lib/kubelet
 
 `$ rm -Rf /var/lib/kubelet`
