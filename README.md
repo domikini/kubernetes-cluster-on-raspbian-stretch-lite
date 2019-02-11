@@ -3,9 +3,9 @@
 This installs specific version of Docker
 
 ```
-$ curl -sSL get.docker.com | VERSION=18.06.1-ce sh && \  
-sudo usermod <user> -aG docker  
-newgrp docker  
+$ curl -sSL get.docker.com | VERSION=18.06.1-ce sh
+$ sudo usermod <user> -aG docker  
+$ newgrp docker  
 ```
 
 ## Disable swap and reboot
