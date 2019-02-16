@@ -43,11 +43,14 @@ Edit /boot/cmdline.txt. Add this text at the end of the line, but don't create a
 Now reboot - do not skip this step.
 
 
-## Install Kubernetes tools
+## Install Kubernetes tools with specific version of Kubernetes
 
 Add repo lists & install kubeadm
 
-`$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list && sudo apt-get update -q && sudo apt-get install -qy kubeadm`
+`$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
+  echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list && \
+  sudo apt-get update -q && \
+  sudo apt-get install -qy kubelet=1.12.5-00 kubectl=1.12.5-00 kubeadm=1.12.5-00`
 
 
 ## Initialize your master node
