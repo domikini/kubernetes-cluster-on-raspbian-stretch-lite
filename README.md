@@ -150,7 +150,11 @@ spec:
         - containerPort:
 ```
 
+Run and create the deployment.
+`kubectl create -f function.yml`
 
+Check that the deployment is successful.
+`kubectl get deployments`
 
 
 
