@@ -107,6 +107,52 @@ Remove the folder /var/lib/kubelet
 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml`
 
 
+## Test Kubernetes cluster by deploying test application
+Test the Kubernetes cluster by deploying the following Markdownrender application.
+
+Create a file and name it function.yml.
+`touch function.yml`
+
+Paste the following code inside the function.yml file.
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: markdownrender
+  labels:
+    app: markdownrender
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+      nodePort: 31118
+  selector:
+    app: markdownrender
+---
+apiVersion: apps/v1beta1 # for versions before 1.6.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: markdownrender
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: markdownrender
+    spec:
+      containers:
+      - name: markdownrender
+        image: functions/markdownrender:latest-armhf
+        imagePullPolicy: Always
+        ports:
+        - containerPort:
+```
+
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml`
+
+
 
 
 
