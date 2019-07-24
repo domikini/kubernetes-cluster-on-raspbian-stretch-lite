@@ -62,7 +62,7 @@ You now have two new commands installed:
 
 kubeadm now has a command to pre-pull the requisites Docker images needed to run a Kubernetes master, type in:
 
-`$ sudo kubeadm config images pull -v3`
+`$ sudo kubeadm config images pull --kubernetes-version v1.12.5`
 
 
 ### If using Weave Net
