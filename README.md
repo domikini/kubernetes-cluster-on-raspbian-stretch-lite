@@ -64,6 +64,8 @@ kubeadm now has a command to pre-pull the requisites Docker images needed to run
 
 `$ sudo kubeadm config images pull --kubernetes-version v1.12.5`
 
+(Check version by checking kubeadm version. Type `kubeadm version`)
+
 
 ### If using Weave Net
 
