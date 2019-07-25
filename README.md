@@ -94,6 +94,10 @@ To join master node from worker nodes, run command:
 
 `$ kubeadm join <ip_number>:<port> --token <token_number> --discovery-token-ca-cert-hash sha256:<sha256_hash_number>`
 
+To create more tokens for joining:
+
+`kubeadm token create --print-join-command`
+
 ## Restart Kubernetes on master
 In order to restart Kubernetes. Run command:
 
