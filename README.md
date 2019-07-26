@@ -19,7 +19,7 @@ static domain_name_servers=8.8.8.8
 This installs specific version of Docker
 
 ```
-$ curl -sSL get.docker.com | VERSION=18.06.1-ce sh
+$ curl -sSL get.docker.com | VERSION=18.06.3-ce sh
 $ sudo usermod <user> -aG docker  
 $ newgrp docker  
 ```
@@ -46,6 +46,11 @@ Now reboot - do not skip this step.
 ## Install Kubernetes tools with specific version of Kubernetes
 
 Add repo lists & install kubeadm
+
+`$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list && sudo apt-get update -q && sudo apt-get install -qy kubelet kubectl kubeadm`
+
+
+If you want to install a specific version of Kubernetes, use the following command instead:
 
 `$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list && sudo apt-get update -q && sudo apt-get install -qy kubelet=1.12.7-00 kubectl=1.12.7-00 kubeadm=1.12.7-00`
 
