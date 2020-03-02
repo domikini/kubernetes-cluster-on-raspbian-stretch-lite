@@ -78,6 +78,10 @@ Initialize your master node:
 
 `$ sudo kubeadm init --token-ttl=0`
 
+If you want to run a specific version of Kubernetes
+
+`$ sudo kubeadm init --token-ttl=0 --kubernetes-version 1.15.6`
+
 ### Configure path to configuration file
 
 After running init command. Run the following commands in order to setup configuration file and put it in a folder in the user home folder. Set the correct permissions for the file.
