@@ -82,6 +82,21 @@ If you want to run a specific version of Kubernetes
 
 `$ sudo kubeadm init --token-ttl=0 --kubernetes-version 1.15.6`
 
+If you get warning (Switch cgroup driver, from cgroupfs to systemd) when running Kubernetes. Input the following in terminal:
+
+```
+cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2"
+}
+EOF
+```
+
 ### Configure path to configuration file
 
 After running init command. Run the following commands in order to setup configuration file and put it in a folder in the user home folder. Set the correct permissions for the file.
