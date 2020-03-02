@@ -97,6 +97,10 @@ cat > /etc/docker/daemon.json <<EOF
 EOF
 ```
 
+Also, do not forget to open the firewall port e.g. 6443 for Kubernetes.
+
+`sudo ufw allow 6443`
+
 ### Configure path to configuration file
 
 After running init command. Run the following commands in order to setup configuration file and put it in a folder in the user home folder. Set the correct permissions for the file.
