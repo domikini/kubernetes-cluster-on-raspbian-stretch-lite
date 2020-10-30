@@ -137,6 +137,9 @@ Install the Flannel driver on the master:
 
 `$ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/c5d10c8/Documentation/kube-flannel.yml`
 
+Check if your flannel version is compatible with the Kubernetes version you have installed. Follow the Flannel instruction which is applicable for your Kubernetes version.
+https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md
+
 ## Join masternode from worker nodes
 To join master node from worker nodes, run command:
 
