@@ -82,6 +82,10 @@ If you want to run a specific version of Kubernetes
 
 `$ sudo kubeadm init --token-ttl=0 --kubernetes-version 1.15.6`
 
+### If using Flannel:
+
+`$ sudo kubeadm init --token-ttl=0 --pod-network-cidr=10.244.0.0/16`
+
 If you get warning (Switch cgroup driver, from cgroupfs to systemd) when running Kubernetes. Input the following in terminal:
 
 ```
@@ -101,6 +105,12 @@ Also, do not forget to open the firewall port e.g. 6443 for Kubernetes.
 
 `sudo ufw allow 6443`
 
+Init step can take a long time, up to 15 minutes.
+
+Sometimes this stage can fail, if it does then you should patch the API Server to allow for a higher failure threshold during initialization around the time you see.
+
+`sudo sed -i 's/failureThreshold: 8/failureThreshold: 20/g' /etc/kubernetes/manifests/kube-apiserver.yaml`
+
 ### Configure path to configuration file
 
 After running init command. Run the following commands in order to setup configuration file and put it in a folder in the user home folder. Set the correct permissions for the file.
@@ -116,6 +126,11 @@ This installs Weave Net driver which is used for the cluster
 
 `$ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
 
+## Install Flannel (alternative)
+
+Install the Flannel driver on the master:
+
+`$ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/c5d10c8/Documentation/kube-flannel.yml`
 
 ## Join masternode from worker nodes
 To join master node from worker nodes, run command:
