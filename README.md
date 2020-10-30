@@ -86,6 +86,11 @@ If you want to run a specific version of Kubernetes
 
 `$ sudo kubeadm init --token-ttl=0 --pod-network-cidr=10.244.0.0/16`
 
+### Troubleshoot init phase
+#### If you need to restart init
+Run kubeadm init command with the --ignore-preflight-errors=all option
+
+#### If you get cgroup driver warning
 If you get warning (Switch cgroup driver, from cgroupfs to systemd) when running Kubernetes. Input the following in terminal:
 
 ```
