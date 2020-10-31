@@ -223,5 +223,14 @@ Run and create the deployment.
 Check that the deployment is successful.
 `kubectl get deployments`
 
+## How to connect to private docker registry with Kubernetes secret
+In order to pull from a private Docker registry from Kubernetes, a secret with the Docker credentials must be created.
 
+First log in to Docker registry:
+`docker login <url-to-Docker-registry:port>`
+
+The credentials are stored in the path ~/.docker.config.json
+
+Create Kubernetes secret by using the command:
+`kubectl create secret generic regcred --from-file=.dockerconfigjson=<absolute-path-to-docker-config.json-file> --type=kubernetes.io/dockerconfigjson`
 
