@@ -234,3 +234,32 @@ The credentials are stored in the path ~/.docker.config.json
 Create Kubernetes secret by using the command:
 `kubectl create secret generic regcred --from-file=.dockerconfigjson=<absolute-path-to-docker-config.json-file> --type=kubernetes.io/dockerconfigjson`
 
+Now you can use the secret by specifying it in the deployment file in the template section e.g:
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-app
+  labels:
+    app: example-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-app
+  template:
+    metadata:
+      labels:
+        app: example-app
+      spec:
+        containers:
+        - name: example-app
+          image: example.server.com:8080/example-app:latest
+          ports:
+          - containerPort: 8090
+        imagePullSecrets:
+        - name: regcred
+```
+
+
