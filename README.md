@@ -131,6 +131,14 @@ This installs Weave Net driver which is used for the cluster
 
 `$ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
 
+If the Kuberentes version is not supported by the latest Weave Net driver, the above execution will fail. If that is the case, you may want to use an older version of Weave Net driver. In order to do that, download the yaml file from above link.
+
+`wget "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
+
+Rename the output file to e.g. weave.yaml. Edit the file with and editor. Find the entries where weave-npc and weave-kube is specified and change the version number to the one you want to execute.
+
+In my case, for kubeadmin version 1.15.12, Weave Net driver 2.6.4 worked well.
+
 ## Install Flannel (alternative)
 
 Install the Flannel driver on the master:
