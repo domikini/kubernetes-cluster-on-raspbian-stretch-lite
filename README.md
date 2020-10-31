@@ -135,7 +135,9 @@ If the Kuberentes version is not supported by the latest Weave Net driver, the a
 
 `wget "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
 
-Rename the output file to e.g. weave.yaml. Edit the file with and editor. Find the entries where weave-npc and weave-kube is specified and change the version number to the one you want to execute.
+Rename the output file to e.g. weave.yaml. Edit the file with and editor. Find the entries where weave-npc and weave-kube is specified and change the version number to the one you want to execute. After editing, save the changes and execute the yaml file.
+
+`kubectl apply -f weave.yaml`
 
 In my case, for kubeadmin version 1.15.12, Weave Net driver 2.6.4 worked well.
 
